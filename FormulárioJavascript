@@ -1,0 +1,37 @@
+function criarformulario(){
+	
+	var formulario = document.createElement("FORM");
+	var input01 = document.createElement("INPUT");
+	formulario.appendChild(input01);
+	var attinput01 = document.createAttribute("type");
+	attinput01.value = "text";
+	input01.setAttributeNode(attinput01);
+	document.body.appendChild(formulario);
+	
+	
+	
+}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<title> Criar um atributo em JavaScript</title>
+	<meta charset="utf-8"/>
+	
+	<style>
+		form{
+			width: 100px;
+			height: 100px;
+			background-color: tomato;
+		}
+	</style>
+</head>
+<body onload="criarelementootimzado()">
+	
+	<div id="formulario">
+	
+		<a href="" onclick="criarformulario()">Criar Formulário</a>
+	
+	</div>
+	<script src="C:\Users\usuário\libreoffice\Referências JavaScript\criarelemento\_js\criarelemento02.js"></script>
+</body>
+</html>
