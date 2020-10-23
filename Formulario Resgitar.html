@@ -10,6 +10,7 @@
             //Limpa valores do formulário de cep.
             document.getElementById('usuario').value=("");
             document.getElementById('email').value=("");
+            document.getElementById('cep').value=("")
             document.getElementById('rua').value=("");
             document.getElementById('bairro').value=("");
     }
@@ -19,6 +20,7 @@
             //Atualiza os campos com os valores.
             document.getElementById('usuario').value=(conteudo.usuario);
             document.getElementById('email').value=(conteudo.email);
+            document.getElementById('cep').value=(conteudo.cep)
             document.getElementById('rua').value=(conteudo.logradouro);
             document.getElementById('bairro').value=(conteudo.bairro);
         } //end if.
@@ -30,32 +32,30 @@
     }
         
     function pesquisacep(valor) {
-
-        //Nova variável "cep" somente com dígitos.
+        var usuario = valor.replace(/\D/g, '');
+        if (usuario != "") {
+	var validacep = /[A-Z a-z]^[0-9]{60}$/;
+        var email = valor.replace(/\D/g, '');
+        if (email != "") {
+	var validacep = /[a-z]^[0-9]{8}$@/;
         var cep = valor.replace(/\D/g, '');
-
-        //Verifica se campo cep possui valor informado.
         if (cep != "") {
-
-            //Expressão regular para validar o CEP.
-            var validacep = /^[0-9]{8}$/;
-
-            //Valida o formato do CEP.
-            if(validacep.test(cep)) {
-
-                //Preenche os campos com "..." enquanto consulta o formulario.
-                document.getElementById('usuario').value="...";
+	var validacep = /^[0-9]{8}$/;
+	var rua = valor.replace(/\D/g, '');
+        if (rua != "") {
+	var validacep = /[A-Z a-z]^[0-9]{8}$/;
+        var bairro = valor.replace(/\D/g, '');
+        if (bairro != "") {
+	var validacep = /[A-Z a-z]^[0-9]{8}$/;
+        if(validacep.test(cep)) {
+		document.getElementById('usuario').value="...";
                 document.getElementById('email').value="...";
+                document.getElementById('cep').value="...";
                 document.getElementById('rua').value="...";
                 document.getElementById('bairro').value="...";
-
-                //Cria um elemento javascript.
-                var script = document.createElement('script');
-
-                //Insere script no documento e carrega o conteúdo.
+		var script = document.createElement('script');
                 document.body.appendChild(script);
-
-            } //end if.
+	} //end if.
             else {
                 //cep é inválido.
                 limpa_formulário_cep();
@@ -91,7 +91,7 @@
         <input name="bairro" type="text" id="bairro" size="40" /></label><br />
 
        <script>
-           options.innerHTML = options.innerHTML + "<button type="button">Clique</button>";
+           options.innerHTML = options.innerHTML + "<button type="button">Enviar</button>";
        </script>
  
        <script>
